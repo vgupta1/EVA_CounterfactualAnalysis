@@ -50,6 +50,10 @@ This folder contains non-confidential static data used by the bandit allocation 
 * buildOPEdatabase.R
 >Does the lion's share of work for the off-policy-evaluation to assess the value of EVA's targeting relatie to random >surveillance testing.  Outputs a complete analysis of estimates by day and type for random surveillance and EVA.  These can >be fed into other scripts to produce plots/summary analysis etc.  
 
+* clusteringLags.ipynb
+>This is Julia notebook that takes as input the file "new_auc3.csv" produced by @Kimon and solves a linear binary optimization problem to cluster countries based on the number of days their public information lags real-time data. 
+
+
 ### Outputs
 
 * grey_arrivs.csv

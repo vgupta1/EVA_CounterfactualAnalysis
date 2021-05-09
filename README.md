@@ -53,6 +53,13 @@ This folder contains non-confidential static data used by the bandit allocation 
 * clusteringLags.ipynb
 >This is Julia notebook that takes as input the file "new_auc3.csv" produced by @Kimon and solves a linear binary optimization problem to cluster countries based on the number of days their public information lags real-time data. 
 
+* grey_ebpred.r
+* grey_arrivals.r
+> These two files produce counterfactual predictions of the prevalence and arrival rates from greylisted countries had they not been greylisted. They take as input OtherData/Xall.csv (which summarizes publicly reported metrics) and create the files grey_eb_preds.csv and grey_arrivs.csv respectively.
+
+* publicdata_efficacy.r
+> This file tries to predict privately observed prevalence rates using GBM on publicly reported metrics (summarized in OtherData/Xall.csv). It tests 5 models with varying features and reports the resulting ROC curves.
+
 
 ### Outputs
 

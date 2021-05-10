@@ -129,7 +129,7 @@ for country in considered_countries:
             
 
 #--Producing Country Lag AUC profile to be used in clustering
-info.to_csv("../OPE_outputs/country_lag_auc_profile.csv")
+info.to_csv("../OtherData/country_lag_auc_profile.csv")
 
 
 

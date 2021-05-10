@@ -163,7 +163,7 @@ roc_results <- roc_results[-1,]
 points(1:100/100, 1:100/100, type = "l", col = "black")
 legend("bottomright", legend=c("Model 1", "Model 2", "Model 3", "Model 4", "Model 5"),
        col=colors, lty=c(1,1), cex=0.8)
-write.csv(roc_results, "Final Figures/Data/public_roc_results.csv", row.names = FALSE)
+# write.csv(roc_results, "../OPE_outputs/public_roc_results.csv", row.names = FALSE)
 
 # viz / save AUROC results
 tmp <- data.frame("Model" = c("Model 1", "Model 2", "Model 3", "Model 4", "Model 5"),
@@ -171,5 +171,5 @@ tmp <- data.frame("Model" = c("Model 1", "Model 2", "Model 3", "Model 4", "Model
 ggplot(data=tmp, aes(x=Model, y=AUROC)) +
   geom_bar(stat="identity", fill="steelblue") + theme_minimal() +
   coord_cartesian(ylim=c(0,1))
-write.csv(auroc, "Final Figures/Data/public_auroc.csv", row.names = FALSE)
+# write.csv(auroc, "../OPE_outputs/public_auroc.csv", row.names = FALSE)
 

@@ -16,8 +16,6 @@ If you find it hepful please consider citing:
 
 For code related to the actual EVA system and how it allocated tests, see our [partner repository](https://github.com/vgupta1/EvaTargetedCovid19Testing).
 
-
-
 ## Data Availability
 
 :warning: **All data files in this repository are realistic but SYNTHETIC data.** :warning: 
@@ -59,6 +57,8 @@ This folder contains non-confidential static data used by the bandit allocation 
 
 * publicdata_efficacy.r
 > This file tries to predict privately observed prevalence rates using GBM on publicly reported metrics (summarized in OtherData/Xall.csv). It tests 5 models with varying features and reports the resulting ROC curves.
+
+*
 
 
 ### Outputs

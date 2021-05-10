@@ -130,5 +130,5 @@ dat$pred_prev <- pmax(dat$pred_prev, 0)
 # i.e., requiring negative-PCR pretest cannot increase prevalence
 dat$pred_prev <- pmax(dat$pred_prev, dat$eb_prev)
 
-write.csv(dat, "grey_eb_preds.csv")
+write.csv(dat, "../OPE_outputs/grey_eb_preds.csv")
 

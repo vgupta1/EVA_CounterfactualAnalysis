@@ -129,7 +129,7 @@ dat$pred_arr <- pmax(dat$pred_arr, 0)
 # i.e., requiring negative-PCR pretest cannot increase arrivals
 dat$pred_arr <- pmax(dat$pred_arr, dat$sm_plf)
 
-write.csv(dat, "grey_predarr.csv")
+write.csv(dat, "../OPE_outputs/grey_predarr.csv")
 
 
 

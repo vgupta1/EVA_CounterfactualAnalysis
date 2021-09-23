@@ -1,16 +1,18 @@
 # Off-Policy and Counterfactual Analysis
 
-In the interest of reproducibility of research, this repository provides all code necessary to reproduce the off-policy evaluation and counterfactual analysis in the paper [Deploying an Artificial Intelligence System for COVID-19 Testing at the Greek Border](https://dx.doi.org/10.2139/ssrn.3789038)  
+In the interest of reproducibility of research, this repository provides all code necessary to reproduce the off-policy evaluation and counterfactual analysis in the paper [Efficient and Targeted COVID-19 Border Testing via Reinforcement Learning](https://www.nature.com/articles/s41586-021-04014-z).  A previous version of this paper was entitled "Deploying an Artificial Intelligence System for COVID-19 Testing at the Greek Border."  
+
+
 
 If you find it hepful please consider citing:
 ```
-@article{bastani2021deploying,
-  title={Deploying an Artificial Intelligence System for Covid-19 Testing at the Greek Border},
+@article{bastani2021Efficient,
+  title={Efficient and Targeted COVID-19 Border Testing via Reinforcement Learning},
   author={Bastani, Hamsa and Drakopoulos, Kimon and Gupta, Vishal and Vlachogiannis, Jon and Hadjicristodoulou, Christos and Lagiou, Pagona and Magiorkinis, Gkikas and Paraskevis, Dimitrios and Tsiodras, Sotirios}, 
   year={2021},
-  month={Feb.},
-  url={http://dx.doi.org/10.2139/ssrn.3789038}, 
-  journal={SSRN}
+  month={Sept.},
+  url={https://doi.org/10.1038/s41586-021-04014-z}, 
+  journal={Nature}
 }
 ```
 
@@ -20,10 +22,15 @@ For code related to the actual EVA system and how it allocated tests, see our [p
 
 :warning: **All data files in this repository are realistic but SYNTHETIC data.** :warning: 
 
-They do not represent actual prevalence rates in Summer 2020.  
+They do not represent actual prevalence rates in Summer 2020 but do represent the structure of data used for our analysis.  
 
-The actual data that support the findings of the above paper are available from the Ministry of
-Digital Governance but restrictions apply to the availability of these data, which were used under license are not publicly available. Data are however available from the authors upon reasonable request and with permission from the Ministry of Digital Governance.
+Actual, aggregated, anonymized data are available at [this repository](https://github.com/kimondr/EVA_Public_Data). These data aggregate
+passenger arrival and testing information over pairs of consecutive days, country of origin, and point of entry. 
+
+The finer granularity data that support the (exact) findings of this study are protected by GDPR. These finer granularity data are available from the Greek Ministry of Civil Protection but restrictions apply to the availability of these data, which were used under license for the current study, and so are not publicly available. Access to these data can only be granted by the Greek Ministry of Civil Protection (info@gscp.gr) for research that is conducted in the public interest for public health (GDPR Recital 159) and scientific purposes (GDPR Article 89). 
+
+Finally, the population-level epidemiological metrics used in our analysis can be obtained freely from the [Our World In Data](https://github.com/owid/covid-19-data/tree/master/public/data).
+
 
 ## Repository Structure
 ### Synthetic Data Files

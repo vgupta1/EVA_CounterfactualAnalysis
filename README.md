@@ -36,7 +36,7 @@ Finally, the population-level epidemiological metrics used in our analysis can b
 ### Synthetic Data Files
 * sample_data.csv
 * sample_test_results.csv
->The first gives the data format and structure of the PLF database and which (anonymized) passengers arrived at each point of >time to each port of entry.  The second file contains allocation decisions by our bandit algorithm.
+>The first gives the data format and structure of the PLF database and which (anonymized) passengers arrived at each point of time to each port of entry.  The second file contains allocation decisions by our bandit algorithm.
 
 ### OtherData
 This folder contains non-confidential static data used by the bandit allocation algorithm and hence the off-policy evaluation.
@@ -44,16 +44,16 @@ This folder contains non-confidential static data used by the bandit allocation 
 ### Source Code
 * helpers.r
 * mse_helpers.r
->These two files contain small helper functions used across all scripts for core computations like fitting and upating our ?>empirical bayes model.
+>These two files contain small helper functions used across all scripts for core computations like fitting and updating our empirical bayes model.
 
 * genHistoricalEB_TS.R
->This file uses all of the available data to create a time series of estimated prevalence for each type.  In contrast to the >bandit allocation, this analysis is in hindsight, and hence free to use data from time periods after time t in order to >estimate prevalence at time t.  In particular i) to estimate prevalence at time t, we use data from [t-3, t+3] days, and ii) we always define types at the level of (country, color_designation) (i.e. without cities/states), for consistency.  
+>This file uses all of the available data to create a time series of estimated prevalence for each type.  In contrast to the bandit allocation, this analysis is in hindsight, and hence free to use data from time periods after time t in order to >estimate prevalence at time t.  In particular i) to estimate prevalence at time t, we use data from [t-3, t+3] days, and ii) we always define types at the level of (country, color_designation) (i.e. without cities/states), for consistency.  
 
 * smoothingEBPriors.R
->The outputs of the moment-matching with only 7 days of data [t-3, t+3] is a bit choppy.  This file performs a cubic spline to >smooth the prior estimates (over time) and then updates the appropriate priors.  
+>The outputs of the moment-matching with only 7 days of data [t-3, t+3] is a bit choppy.  This file performs a cubic spline to smooth the prior estimates (over time) and then updates the appropriate priors.  
 
 * buildOPEdatabase.R
->Does the lion's share of work for the off-policy-evaluation to assess the value of EVA's targeting relatie to random >surveillance testing.  Outputs a complete analysis of estimates by day and type for random surveillance and EVA.  These can >be fed into other scripts to produce plots/summary analysis etc.  
+>Does the lion's share of work for the off-policy-evaluation to assess the value of EVA's targeting relative to random >surveillance testing.  Outputs a complete analysis of estimates by day and type for random surveillance and EVA.  These can be fed into other scripts to produce plots/summary analysis etc.  
 
 * clusteringLags.ipynb
 >This is Julia notebook that takes as input the file "new_auc3.csv" produced by @Kimon and solves a linear binary optimization problem to cluster countries based on the number of days their public information lags real-time data. 
@@ -65,14 +65,12 @@ This folder contains non-confidential static data used by the bandit allocation 
 * publicdata_efficacy.r
 > This file tries to predict privately observed prevalence rates using GBM on publicly reported metrics (summarized in OtherData/Xall.csv). It tests 5 models with varying features and reports the resulting ROC curves.
 
-*
-
 
 ### Outputs
 
 * grey_arrivs.csv
 * grey_eb_preds.csv
->These two file contain our estimates of i) the number of arrivals from and ii) the Covid-19 prevalence for every country as a >daily time series.  These estimates are computed under the counterfactual assumption that we had *not* grey-listed the >country. 
+>These two file contain our estimates of i) the number of arrivals from and ii) the Covid-19 prevalence for every country as a daily time series.  These estimates are computed under the counterfactual assumption that we had *not* grey-listed the >country. 
 
 ##### OPE Outputs 
 This folder contains outputs generated in the course of the off-policy analysis. Specifically,  

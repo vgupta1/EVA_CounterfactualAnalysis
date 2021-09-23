@@ -47,7 +47,7 @@ This folder contains non-confidential static data used by the bandit allocation 
 >These two files contain small helper functions used across all scripts for core computations like fitting and updating our empirical bayes model.
 
 * genHistoricalEB_TS.R
->This file uses all of the available data to create a time series of estimated prevalence for each type.  In contrast to the bandit allocation, this analysis is in hindsight, and hence free to use data from time periods after time t in order to >estimate prevalence at time t.  In particular i) to estimate prevalence at time t, we use data from [t-3, t+3] days, and ii) we always define types at the level of (country, color_designation) (i.e. without cities/states), for consistency.  
+>This file uses all of the available data to create a time series of estimated prevalence for each type.  In contrast to the bandit allocation, this analysis is in hindsight, and hence free to use data from time periods after time t in order to estimate prevalence at time t.  In particular i) to estimate prevalence at time t, we use data from [t-3, t+3] days, and ii) we always define types at the level of (country, color_designation) (i.e. without cities/states), for consistency.  
 
 * smoothingEBPriors.R
 >The outputs of the moment-matching with only 7 days of data [t-3, t+3] is a bit choppy.  This file performs a cubic spline to smooth the prior estimates (over time) and then updates the appropriate priors.  
@@ -70,7 +70,7 @@ This folder contains non-confidential static data used by the bandit allocation 
 
 * grey_arrivs.csv
 * grey_eb_preds.csv
->These two file contain our estimates of i) the number of arrivals from and ii) the Covid-19 prevalence for every country as a daily time series.  These estimates are computed under the counterfactual assumption that we had *not* grey-listed the >country. 
+>These two file contain our estimates of i) the number of arrivals from and ii) the Covid-19 prevalence for every country as a daily time series.  These estimates are computed under the counterfactual assumption that we had *not* grey-listed the country. 
 
 ##### OPE Outputs 
 This folder contains outputs generated in the course of the off-policy analysis. Specifically,  

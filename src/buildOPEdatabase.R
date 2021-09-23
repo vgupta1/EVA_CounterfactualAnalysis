@@ -289,10 +289,13 @@ runOPE_Analysis <- function(str_path_to_eb_est){
   #because arrivals are not unbiased for the new prevalence.  
 
   #Add on variance approximation information
-  ope_dat <- 
-    ope_dat %>% 
-    mutate(qk = if_else(estNumArrivals > 0, numPositivesFound / estNumArrivals, 0),
-           var_contrib = prop_score^2 * estNumArrivals * qk * (1 - qk))
+  #This is being computed in an old/defunct approximation
+  #see file "AUC_VarianceAnalysis.R" for updated computation.
+  ope_dat <- ope_dat %>% 
+    mutate(
+      r_naive = if_else( numTestsPerformed > 0, numPositivesFound / numTestsPerformed, 0),
+      var_contrib = prop_score^2 * numPositivesFound * (1 - r_naive),
+    )
   
   ##Dump this complete table of OPE output for summary level analysis for paper  
   write_csv(ope_dat, str_path_output)
@@ -377,6 +380,6 @@ perf <-
 #Inspect the adjustments for GCF
 left_join(perf, t$num_prevented) %>%
   mutate(
-    prevented_ratio = num_prevented / rand_caught_ipw,
-    GCF_sd_ratio = if_else(is_peak, 13.47438, 4.533486) / rand_caught_ipw, ###This uses the 9day window!!!!
+    prevented_ratio = num_prevented / gitt_caught_ipw,
+    GCF_sd_ratio = if_else(is_peak, 13.47438, 4.533486) / gitt_caught_ipw, ###This uses the 9day window!!!!
     GCF_ratio = (gitt_caught_ipw + num_prevented)/ rand_caught_ipw)

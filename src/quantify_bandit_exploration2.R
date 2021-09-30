@@ -23,7 +23,7 @@ for(i in 1:length(files)){
   res[i,"Date"] <- as.Date(substr(tmp, 1, nchar(tmp) - 4))
   
   # read in file
-  tmp <- paste("JonsFinalDataDump_26Nov/PastFits/", files[i], sep="")
+  tmp <- paste("OtherData/PastFits/", files[i], sep="")
   f <- read.csv(tmp)
   
   # get # of tests allocated
@@ -55,5 +55,4 @@ ggplot(res[c("Date", "Explore")], aes(x=Date,y=Explore)) + geom_line() +
   ggtitle("Avg. Prevalence of Allocated Tests Relative to Greedy") +
   scale_x_date(date_minor_breaks = "2 day")
 
-# write.csv(res[c("Date", "Explore")], "explore_v2.csv", row.names=FALSE)
 

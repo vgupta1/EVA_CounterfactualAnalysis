@@ -80,13 +80,17 @@ This folder contains non-confidential data used by the bandit allocation algorit
 * produce_public_vs_private_raw_data.py
 > This file prepares the timeseries of publicly posted epidemiological metrics Xall.csv and Xall_new.csv. It produces for every country and date pair the timeseries of these metrics for the interval [t-20,t+19]. Set the variable "raw" to FALSE to obtain "smoothed" estimates (corresponding to Xall_new.csv) and TRUE to obtain "raw" values (corresponding to Xall.csv).
 
-
 * publicdata_efficacy.r
 > This file tries to predict privately observed prevalence rates using GBM on publicly reported metrics (summarized in OtherData/Xall.csv). It tests 5 models with varying features and reports the resulting ROC curves.
 
 * AUC_Variance_Analysis.R
 > Computes an upper bound on the variance of our IPW estimates of effectiveness based on a decaying autocorrelation assumption.
 
+* quantify_bandit_exploration.r
+> This file quantifies how much exploration Eva did under one possible metric, i.e., how many tests were allocated to passengers by Eva with prevalence lower than those who would be allocated a test by a greedy myopic algorithm.
+
+* quantify_bandit_exploration2.r
+> This file quantifies how much exploration Eva did under an alternative metric, i.e., the average prevalence of passengers allocated a test by Eva compared to the average prevalence of passengers allocated a test by a greedy myopic algorithm.
 
 
 ### Outputs
@@ -115,3 +119,4 @@ To execute the code, one should follow the following steps:
 4. Run "grey_ebpred.r" and "grey_arrivals.r" to obtain counterfactual estimates of prevalence and arrivals had a country not been greylisted.
 5. Run buildOPEdatabase.R to generate all off-policy evaluation and counterfactual analysis.  Summary statistics and plots can easily be created from the resulting dumped files.  Any "standard errors" from this run should be ignored; the following step generates higher quality standard errors.
 6. Run AUC_Variance_Analysis.R to generate associated standard errors for IPW estimates from buildOPEdatabase.R.
+7. Run quantify_bandit_exploration.r and quantify_bandit_exploration2.r

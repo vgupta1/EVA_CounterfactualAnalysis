@@ -62,8 +62,13 @@ This folder contains non-confidential static data used by the bandit allocation 
 * grey_arrivals.r
 > These two files produce counterfactual predictions of the prevalence and arrival rates from greylisted countries had they not been greylisted. They take as input OtherData/Xall.csv (which summarizes publicly reported metrics) and create the files grey_eb_preds.csv and grey_arrivs.csv respectively.
 
+* produce_public_vs_private_raw_data.py
+> This file prepares the timeseries of publicly posted epidemiological metrics Xall.csv and Xall_new.csv. It produces for every country and date pair the timeseries of these metrics for the interval [t-20,t+19].
+
 * publicdata_efficacy.r
 > This file tries to predict privately observed prevalence rates using GBM on publicly reported metrics (summarized in OtherData/Xall.csv). It tests 5 models with varying features and reports the resulting ROC curves.
+
+
 
 
 ### Outputs
@@ -88,6 +93,7 @@ This folder contains outputs generated in the course of the off-policy analysis.
 To execute the code, one should follow the following steps:
 1. Run the "genHistoricalEB_TS.R" to generate the time-series of estimated prevalence for each country. 
 2. Run the "smoothingEBPriors.R" to smooth these estimates for improved performance.
-3. Run "grey_ebpred.r" and "grey_arrivals.r" to obtain counterfactual estimates of prevalence and arrivals had a country not been greylisted.
-4. Run buildOPEdatabase.R to generate all off-policy evaluationa nd counterfactual analysis.  Summary statistics and plots can easily be created from the resulting dumped files.  
+3. Run the "produce_public_vs_private_raw_data.py" file to generate public data timeseries for each country and date. 
+4. Run "grey_ebpred.r" and "grey_arrivals.r" to obtain counterfactual estimates of prevalence and arrivals had a country not been greylisted.
+5. Run buildOPEdatabase.R to generate all off-policy evaluationa nd counterfactual analysis.  Summary statistics and plots can easily be created from the resulting dumped files.  
 

@@ -1,15 +1,16 @@
-import numpy as np
+#This auxiliary code prepares for each date and country the cases, a table of greylisted status, deaths and tests as publicly reported 
+#for a window starting before and ending after the date. This is used in evaluating the value of public data. 
 
+
+import numpy as np
 import pandas as pd
 
 
+history_start=20 #---how far into the past---
+future_end=20 #----how-far into the future
 
-history_start=20
-future_end=20
-window_f=7;
-window_e=3;
-
-
+#---Should testing data be raw or should the OWID smooting be used?
+raw=True;
 
 
 #Downloading actual case and death data from owid and drop duplicates
@@ -26,9 +27,15 @@ df=df[(df['date']>=pd.to_datetime('07/01/2020')) \
     
 #----Keeping only relevant fields: cases, deaths, tests and dealing with
 #----Countries that make corrections in reported data (reporting many times
-#----for same date)                                             
-df=df[['iso_code','date','location','new_cases_smoothed_per_million',\
+#----for same date)  
+if raw:
+    df=df[['iso_code','date','location','new_cases_smoothed_per_million',\
        'new_deaths_smoothed_per_million','new_tests_per_thousand']]
+else:
+     df=df[['iso_code','date','location','new_cases_smoothed_per_million',\
+       'new_deaths_smoothed_per_million','new_tests_smoothed_per_thousand']]
+
+
 df=df.sort_values(by=['iso_code','date'])
 df=df.loc[df.groupby(['iso_code','date']).date.idxmax()]
 
@@ -87,17 +94,29 @@ for country in df['alpha-2'].drop_duplicates(): #---for every country
                     prevalence=data_window[data_window['date']==date]\
                         ['eb_prev'].values.tolist()
                     #----adding public data of window around reference date
-                    X_dataframe.loc[len(X_dataframe),\
+                    if raw:
+                        X_dataframe.loc[len(X_dataframe),\
                         ['country','date','grey','prev']+cases+deaths+tests]\
                         =np.array([country]+[date.strftime('%Y-%m-%d')]+ \
                         grey_status+prevalence+ \
                         data_window['new_cases_smoothed_per_million'].values.tolist()\
                         +data_window['new_deaths_smoothed_per_million'].values.tolist() \
                         +data_window['new_tests_per_thousand'].values.tolist())
-
+                    else:
+                        X_dataframe.loc[len(X_dataframe),\
+                        ['country','date','grey','prev']+cases+deaths+tests]\
+                        =np.array([country]+[date.strftime('%Y-%m-%d')]+ \
+                        grey_status+prevalence+ \
+                        data_window['new_cases_smoothed_per_million'].values.tolist()\
+                        +data_window['new_deaths_smoothed_per_million'].values.tolist() \
+                        +data_window['new_tests_smoothed_per_thousand'].values.tolist())
+                                
+                            
 
 #-----Store for Greylisting Counterfactuals and Public Data Evaluation----
-X_dataframe.to_csv('../OtherData/Xall.csv')
-
+if raw:
+    X_dataframe.to_csv('../OtherData/Xall.csv')
+else:
+    X_dataframe.to_csv('../OtherData/Xall_new.csv')
 
 

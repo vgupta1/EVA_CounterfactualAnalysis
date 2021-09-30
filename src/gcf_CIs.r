@@ -5,7 +5,7 @@ dat <- read.csv("grey_eb_preds.csv")
 dat$X <- NULL
 dat$date <- as.Date(dat$date, format = "%Y-%m-%d")
 
-dat2 <- read.csv("grey_predarr.csv")
+dat2 <- read.csv("grey_arrivs.csv")
 dat2$X <- NULL
 dat2$date <- as.Date(dat2$date, format = "%Y-%m-%d")
 

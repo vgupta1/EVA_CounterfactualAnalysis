@@ -55,6 +55,9 @@ This folder contains non-confidential static data used by the bandit allocation 
 * buildOPEdatabase.R
 >Does the lion's share of work for the off-policy-evaluation to assess the value of EVA's targeting relative to random >surveillance testing.  Outputs a complete analysis of estimates by day and type for random surveillance and EVA.  These can be fed into other scripts to produce plots/summary analysis etc.  
 
+* compare_to_epi.R
+>Generates a time series of risk scores for each country based on its epidemiological metrics (cases per capita, deaths per capita, positivity rates). It then generates propensity scores for testing each type of passenger -- had we tested roughly proportionally to these epidemiological metrics -- for each day based on arrivals, testing budgets. It also computes scalings that are recorded manually in scalings.csv (see paper for details).
+
 * clusteringLags.ipynb
 >This is Julia notebook that takes as input the file "country_lag_auc_profile.csv.csv" produced by produce_lag_profiles.py and solves a linear binary optimization problem to cluster countries based on the number of days their public information lags real-time data. 
 

@@ -77,6 +77,9 @@ This folder contains non-confidential data used by the bandit allocation algorit
 * grey_arrivals.r
 > These two files produce counterfactual predictions of the prevalence and arrival rates from greylisted countries had they not been greylisted. They take as input OtherData/Xall.csv (which summarizes publicly reported metrics) and create the files grey_eb_preds.csv and grey_arrivs.csv respectively.
 
+* gcf_CIs.r
+> Produces standard deviations around the prevalence and arrivals predictions using Monte Carlo.
+
 * produce_public_vs_private_raw_data.py
 > This file prepares the timeseries of publicly posted epidemiological metrics Xall.csv and Xall_new.csv. It produces for every country and date pair the timeseries of these metrics for the interval [t-20,t+19]. Set the variable "raw" to FALSE to obtain "smoothed" estimates (corresponding to Xall_new.csv) and TRUE to obtain "raw" values (corresponding to Xall.csv).
 

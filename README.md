@@ -80,11 +80,14 @@ This folder contains non-confidential static data used by the bandit allocation 
 * produce_public_vs_private_raw_data.py
 > This file prepares the timeseries of publicly posted epidemiological metrics Xall.csv and Xall_new.csv. It produces for every country and date pair the timeseries of these metrics for the interval [t-20,t+19]. Set the variable "raw" to FALSE to obtain "smoothed" estimates (corresponding to Xall_new.csv) and TRUE to obtain "raw" values (corresponding to Xall.csv).
 
-
 * publicdata_efficacy.r
 > This file tries to predict privately observed prevalence rates using GBM on publicly reported metrics (summarized in OtherData/Xall.csv). It tests 5 models with varying features and reports the resulting ROC curves.
 
+* quantify_bandit_exploration.r
+> This file quantifies how much exploration Eva did under one possible metric, i.e., how many tests were allocated to passengers by Eva with prevalence lower than those who would be allocated a test by a greedy myopic algorithm.
 
+* quantify_bandit_exploration2.r
+> This file quantifies how much exploration Eva did under an alternative metric, i.e., the average prevalence of passengers allocated a test by Eva compared to the average prevalence of passengers allocated a test by a greedy myopic algorithm.
 
 
 ### Outputs
